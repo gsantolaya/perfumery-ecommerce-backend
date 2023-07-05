@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8010
 const cors = require('cors');
 const { initDBConnection } = require('./database/dbConnection');
 const userRoutes  = require('./routes/users.routes');
-//const productRoutes  = require('./routes/products.routes');
+const productRoutes  = require('./routes/products.routes');
 
 
 app.use(express.json())
@@ -16,7 +16,7 @@ app.get('/', (req, res)=>{
 })
 
 app.use("/api/users", userRoutes)
-//app.use("/api/products", productRoutes)
+app.use("/api/products", productRoutes)
 
 app.listen(PORT, ()=>{
     initDBConnection();

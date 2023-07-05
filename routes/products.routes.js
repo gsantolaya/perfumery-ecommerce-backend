@@ -7,9 +7,9 @@ const { body } = require('express-validator');
 const router = Router();
 const { validateErrors } = require ("../middlewares/validateErrors")
 
-router.get("/", jwtValidation, getProducts); 
+router.get("/", getProducts); //jwtValidation, 
 
-router.get("/:id", jwtValidation, getProductById); 
+router.get("/:id", getProductById); //jwtValidation, 
 
 router.post("/", [
     body ('name').notEmpty().withMessage('El nombre del producto es obligatorio'),
@@ -22,7 +22,7 @@ router.post("/", [
     body ('stock').notEmpty().withMessage('El stock es obligatorio'),
     body ('classification').notEmpty().withMessage('La clasificación del producto es obligatoria'),
     validateErrors,
-], jwtValidation, createProduct); 
+], createProduct); //jwtValidation, 
 
 router.put(
   "/:id", [
@@ -36,8 +36,8 @@ router.put(
     body ('stock').notEmpty().withMessage('El stock es obligatorio'),
     body ('classification').notEmpty().withMessage('La clasificación del producto es obligatoria'),
     validateErrors,
-], jwtValidation, editProduct);
+], editProduct); //jwtValidation, 
 
-router.delete("/:id", jwtValidation, deleteProduct); 
+router.delete("/:id", deleteProduct); //jwtValidation, 
 
 module.exports = router;

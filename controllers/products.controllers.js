@@ -33,7 +33,8 @@ const createProduct = async (req, res) => {
             brand: req.body.brand,
             classification:req.body.classification,
             price: req.body.price,
-            stock: req.body.stock
+            stock: req.body.stock,
+            image: req.body.image
         }
         const product = Products.create(newProduct)
         res.status(201).send({ mensaje: "Producto agregado con éxito", producto: newProduct })
@@ -50,7 +51,9 @@ const editProduct = async(req, res)=>{
             brand: req.body.brand,
             classification:req.body.classification,
             price: req.body.price,
-            stock: req.body.stock
+            stock: req.body.stock,
+            image: req.body.image
+
     }
     try {
         const product = await Products.findByIdAndUpdate(id, productEdited)
